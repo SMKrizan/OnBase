@@ -31,6 +31,13 @@ THEN I am prompted to select an employee to update and their new role and this i
 - Node
 - ES6
 
+### NPM Packages:
+- Express
+- Inquirer
+- MySQL2
+- Console.table
+- Jest
+
 
     ## Table of Contents:
     - [Instructions for Installation](#instructions-for-installation)
