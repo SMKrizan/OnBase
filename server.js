@@ -2,12 +2,13 @@
 const express = require('express');
 require('dotenv').config();
 
-// local file dependency
-const apiRoutes = require('./routes/apiRoutes');
-
 // port designation ===============================================================================================
 const PORT = process.env.PORT || 3001;
 const app = express();
+
+// local files connect
+const db = require('./db/database');
+const apiRoutes = require('./routes/apiRoutes');
 
 // middleware =====================================================================================================
 // converts incoming data into key:value pairings; "false" indicates there is no nested data
