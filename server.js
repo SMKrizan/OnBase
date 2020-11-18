@@ -1,5 +1,6 @@
 // route-handling npm package
 const express = require('express');
+require('dotenv').config();
 
 // local file dependency
 const apiRoutes = require('./routes/apiRoutes');

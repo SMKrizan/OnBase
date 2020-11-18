@@ -5,6 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "jest",
+    "pwd": "",
     "migrate": "",
     "seed": "",
     "db": "",
@@ -23,6 +24,7 @@
   "homepage": "https://github.com/SMKrizan/onBase#readme",
   "dependencies": {
     "console.table": "^0.10.0",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "inquirer": "^7.3.3",
     "mysql2": "^2.2.5"
