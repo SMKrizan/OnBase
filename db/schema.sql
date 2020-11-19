@@ -15,7 +15,10 @@ CREATE TABLE roles (
     id INTEGER(3) AUTO_INCREMENT NOT NULL,
     title VARCHAR(30) NOT NULL,
     salary DECIMAL NOT NULL,
-    dept_id INTEGER, -- reference to department to which role belongs
+    dept_id INTEGER,
+    -- establishes department id as foreign key to role; value auto-updates and preserved upon deletion
+    FOREIGN KEY (dept_id) REFERENCES department(id) 
+    ON UPDATE CASCADE ON DELETE RESTRICT,
     PRIMARY KEY(id)
 );
 
@@ -24,6 +27,12 @@ CREATE TABLE employees (
     first_name VARCHAR(30) NOT NULL,
     last_name VARCHAR(30) NOT NULL,
     role_id INTEGER NOT NULL,
-    manager_id INTEGER, -- reference to another employee who serves as manager for this employee
+    manager_id INTEGER,
+    -- establishes employee id of manager as foreign key to employee; value set to null upon deletion
+    FOREIGN KEY (manager_id) REFERENCES employees(id)
+    ON DELETE SET NULL,
+    -- establishes role id as foreign key to employee; value auto-updates and preserved upon deletion
+    FOREIGN KEY (role_id) REFERENCES roles(id)
+    ON UPDATE CASCADE ON DELETE RESTRICT,
     PRIMARY KEY(id)
 );
