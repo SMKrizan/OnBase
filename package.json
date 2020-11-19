@@ -5,11 +5,12 @@
   "main": "server.js",
   "scripts": {
     "test": "jest",
-    "pwd": "",
-    "migrate": "",
-    "seed": "",
-    "db": "",
-    "start": "node server.js"
+    "start": "node server.js",
+    "mysql": "mysql -u root -p",
+    "pwd": "process.env.PWD",
+    "migrate": "USE cms source db/schema.sql",
+    "seed": "source db/seeds.sql",
+    "db": "db/cms.db"
   },
   "repository": {
     "type": "git",
