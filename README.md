@@ -28,6 +28,12 @@ AS A business owner
 THEN I am presented with a formatted table showing employee data, including employee ids, first names, last names, job titles, departments, salaries, and managers that the employees report to
 SO THAT I can organize and plan my business GIVEN a command-line application that accepts user input
 THEN I am prompted to select an employee to update and their new role and this information is updated in the database
+BONUS: 
+- Update employee managers.
+- View employees by manager.
+- View employees by department.
+- Delete departments, roles, and employees.
+- View the total utilized budget of a department—i.e., the combined salaries of all employees in that department.
 
 ### Languages used:
 - MySQL
