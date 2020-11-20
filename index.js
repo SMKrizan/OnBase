@@ -1,23 +1,23 @@
 const inquirer = require('inquirer');
 require('console.table');
-// const db = require('./db');
-const emp = require('./lib/empData');
-const role = require('./lib/roleData');
-const dept = require('./lib/deptData');
 
+const deptData = require('./lib/deptData');
+const empData = require('./lib/empData')
+const roleData = require('./lib/roleData')
 
 // prompt user to select an option
-const selectOption = () => {
+const selectAction = () => {
     console.log(`
     =======================================================
-    Select one of the following activities or exit:
+     ** Welcome to the onBase Content Management System **
+    You may choose one of the following activities or exit:
     =======================================================
     `)
     return inquirer
         .prompt([
             {
                 type: 'list',
-                name: 'activityOption',
+                name: 'activity',
                 message: 'What would you like to do?',
                 choices: [
                     'View all departments', 
@@ -28,38 +28,43 @@ const selectOption = () => {
                     'Add an employee',
                     'Update an employee role',
                     'Exit'
-                ]
-            }
+                ],
+            },
         ])
-        .then(selection => {
-            switch (selection.choices) {
+        .then((selection) => {
+            console.log("selection.activity: ", selection.activity)
+            switch (selection.activity) {
                 case 'View all departments':
-                    dept.displayDepartments();
+                    displayDepartments();
                     break;
                 case 'View all roles':
-                    role.displayRoles();
+                    displayRoles();
                     break;
                 case 'View all employees':
-                    emp.displayEmployees();
+                    displayEmployees();
                     break;
                 case 'Add a department':
-                    dept.addDepartment();
+                    addDepartment();
                     break;
                 case 'Add a role':
-                    role.addRole();
+                    addRole();
                     break;
                 case 'Add an employee':
-                    emp.addEmployee();
+                    eaddEmployee();
                     break;
                 case 'Update an employee role':
-                    emp.updateEmployee();
+                    eupdateEmployee();
                     break;
                 default:
                     exit();
             }
         });
+        // .catch(err => {
+        //     console.log(err);
+        // });
+    
 };
-selectOption()
+selectAction()
 
 // Select another CMS activity or exit the application
 const continueOrExit = () => {
@@ -73,8 +78,8 @@ const continueOrExit = () => {
             }
         ])
         .then((selection) => {
-            if (selection.continueOrExit === true) {
-                selectOption();
+            if (selection.continueOrExit) {
+                selectAction();
             } else {
                 exit();
             }
@@ -86,17 +91,3 @@ function exit() {
     console.log("Your session has ended.");
     process.exit();
 };
-
-
-// AS A business owner
-// THEN I am presented with a formatted table showing employee data:
-//employee ids
-//first names
-//last names
-//job titles
-//departments
-//salaries
-//and managers that employees report to
-
-
-module.exports = continueOrExit();

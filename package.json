@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "start": "node server.js",
+    "start": "node index.js",
     "migrate": "db/cms.db < db/schema.sql",
     "seed": "db/cms.db < db/schema.sql",
     "db": "db/cms.db"
