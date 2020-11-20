@@ -1,16 +1,16 @@
 const inquirer = require('inquirer');
 require('console.table');
-const db = require('./db');
-const lib = require('./lib');
+// const db = require('./db');
+const emp = require('./lib/empData');
+const role = require('./lib/roleData');
+const dept = require('./lib/deptData');
 
-// GIVEN a command-line application that accepts user input
-// WHEN I start the application
 
 // prompt user to select an option
 const selectOption = () => {
     console.log(`
     =======================================================
-    Select one of the following activities or exit to quit:
+    Select one of the following activities or exit:
     =======================================================
     `)
     return inquirer
@@ -32,28 +32,27 @@ const selectOption = () => {
             }
         ])
         .then(selection => {
-            let selection = activityOption.choices
-            switch (selection) {
+            switch (selection.choices) {
                 case 'View all departments':
-                    displayDepartments();
+                    dept.displayDepartments();
                     break;
                 case 'View all roles':
-                    displayRoles();
+                    role.displayRoles();
                     break;
                 case 'View all employees':
-                    displayEmployees();
+                    emp.displayEmployees();
                     break;
                 case 'Add a department':
-                    addDepartment();
+                    dept.addDepartment();
                     break;
                 case 'Add a role':
-                    addRole();
+                    role.addRole();
                     break;
                 case 'Add an employee':
-                    addEmployee();
+                    emp.addEmployee();
                     break;
                 case 'Update an employee role':
-                    updateEmployee();
+                    emp.updateEmployee();
                     break;
                 default:
                     exit();
@@ -61,6 +60,33 @@ const selectOption = () => {
         });
 };
 selectOption()
+
+// Select another CMS activity or exit the application
+const continueOrExit = () => {
+    return inquirer
+        .prompt([
+            {
+                type: 'confirm',
+                name: 'continueOrExit',
+                message: 'Would you like to continue?',
+                default: true
+            }
+        ])
+        .then((selection) => {
+            if (selection.continueOrExit === true) {
+                selectOption();
+            } else {
+                exit();
+            }
+        });
+};
+
+// Exit the application
+function exit() {
+    console.log("Your session has ended.");
+    process.exit();
+};
+
 
 // AS A business owner
 // THEN I am presented with a formatted table showing employee data:
@@ -72,3 +98,5 @@ selectOption()
 //salaries
 //and managers that employees report to
 
+
+module.exports = continueOrExit();
