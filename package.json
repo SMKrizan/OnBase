@@ -2,10 +2,10 @@
   "name": "employee-tracker",
   "version": "1.0.0",
   "description": "Description This application is a content management system designed to manage a company's employee database from the command line.",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "jest",
-    "start": "node index.js",
+    "start": "node server.js",
     "migrate": "db/cms.db < db/schema.sql",
     "seed": "db/cms.db < db/schema.sql",
     "db": "db/cms.db"
