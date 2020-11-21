@@ -1,11 +1,11 @@
 DROP DATABASE IF EXISTS cms;    
 CREATE DATABASE cms;
 USE cms;
-DROP TABLE IF EXISTS department;
+DROP TABLE IF EXISTS departments;
 DROP TABLE IF EXISTS roles;
 DROP TABLE IF EXISTS employees;
 
-CREATE TABLE department (
+CREATE TABLE departments (
     id INTEGER(8) AUTO_INCREMENT NOT NULL,
     dept_name VARCHAR(30) NOT NULL,
     PRIMARY KEY(id)
@@ -16,8 +16,8 @@ CREATE TABLE roles (
     title VARCHAR(30) NOT NULL,
     salary DECIMAL NOT NULL,
     dept_id INTEGER,
-    -- establishes department id as foreign key to role; value auto-updates and preserved upon deletion
-    FOREIGN KEY (dept_id) REFERENCES department(id) 
+    -- establishes departments id as foreign key to role; value auto-updates and preserved upon deletion
+    FOREIGN KEY (dept_id) REFERENCES departments(id) 
     ON UPDATE CASCADE ON DELETE RESTRICT,
     PRIMARY KEY(id)
 );

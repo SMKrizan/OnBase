@@ -1,7 +1,14 @@
-const index = require('./lib/index');
+const index = require('./lib/index.js');
+console.log('index: ', index);
 
-let init = () => {
+const init = () => {
+    console.log(`
+    =======================================================
+    ***** Welcome to onBase Content Management System *****
+    You may choose one of the following activities or exit:
+    =======================================================
+    `)
     index();
 }
 
-init();
+module.exports = init()

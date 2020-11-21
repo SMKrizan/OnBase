@@ -18,7 +18,7 @@ connection.connect (err => {
     if (err) {
         return console.log(err.message);
     }
-    console.log('Now connected to the MySQL database server.');
+    console.log('\n(now connected to the onBase (MySQL) server)');
 });
 
 module.exports = connection; 
