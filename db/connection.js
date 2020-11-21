@@ -1,7 +1,8 @@
 // for working with encrypted environmental variables
 require('dotenv').config();
 // npm sql package connects to database and performs queries
-const mysql = require('mysql2/promise');
+const mysql = require('mysql2');
+const mysql2 = require('mysql2/promise');
 
 
 // create connection to MySQL database
@@ -12,8 +13,16 @@ const db = mysql.createConnection({
     database: "cms"
 });
 
+// calls connect() method on 'db' to connect to database
+db.connect(function (err) {
+    if (err) {
+        return console.log(err.message);
+    }
+    console.log('\n(now connected to the onBase database)');
+});
+
 // creat pooled connected to allow multiple queries to collect
-const pool = mysql.createPool({
+const pool = mysql2.createPool({
     host: process.env.HOST,
     user: process.env.USER,
     password: process.env.DB_PWD,
@@ -24,12 +33,5 @@ const pool = mysql.createPool({
   });
 
 
-// calls connect() method on 'con' to connect to database
-// connection.connect (err => {
-//     if (err) {
-//         return console.log(err.message);
-//     }
-//     console.log('\n(now connected to the onBase (MySQL) server)');
-// });
 
 module.exports = { db, pool }; 
