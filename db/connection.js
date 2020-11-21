@@ -4,7 +4,6 @@ require('dotenv').config();
 const mysql = require('mysql2/promise');
 
 
-
 // create connection to MySQL database
 const db = mysql.createConnection({
     host: process.env.HOST,
@@ -13,6 +12,7 @@ const db = mysql.createConnection({
     database: "cms"
 });
 
+// creat pooled connected to allow multiple queries to collect
 const pool = mysql.createPool({
     host: process.env.HOST,
     user: process.env.USER,
