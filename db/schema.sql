@@ -17,7 +17,7 @@ CREATE TABLE roles (
     salary DECIMAL NOT NULL,
     dept_id INTEGER,
     -- establishes departments id as foreign key to role
-    FOREIGN KEY (dept_id) REFERENCES departments(id),
+    FOREIGN KEY (dept_id) REFERENCES departments(id) ON DELETE SET NULL,
     PRIMARY KEY(id)
 );
 
@@ -25,11 +25,11 @@ CREATE TABLE employees (
     id INTEGER(10) AUTO_INCREMENT NOT NULL,
     first_name VARCHAR(30) NOT NULL,
     last_name VARCHAR(30) NOT NULL,
-    role_id INTEGER NOT NULL,
+    role_id INTEGER,
     manager_id INTEGER,
-    -- establishes employee id of manager as foreign key to employee; value set to null upon deletion
-    FOREIGN KEY (manager_id) REFERENCES employees(id) ON DELETE SET NULL,
     -- establishes role id as foreign key to employee
-    FOREIGN KEY (role_id) REFERENCES roles(id),
+    FOREIGN KEY (role_id) REFERENCES roles(id) ON DELETE SET NULL,
+    -- establishes employee id of manager as foreign key to employee
+    FOREIGN KEY (manager_id) REFERENCES employees(id) ON DELETE SET NULL,
     PRIMARY KEY(id)
 );
