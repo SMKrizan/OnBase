@@ -21,7 +21,7 @@ db.connect(function (err) {
     console.log('\n(now connected to the onBase database)');
 });
 
-// creat pooled connected to allow multiple queries to collect
+// creates pooled connected to allow multiple queries
 const pool = mysql2.createPool({
     host: process.env.HOST,
     user: process.env.USER,
@@ -31,7 +31,6 @@ const pool = mysql2.createPool({
     connectionLimit: 10,
     queueLimit: 0
   });
-
 
 
 module.exports = { db, pool }; 
