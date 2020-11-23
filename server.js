@@ -3,7 +3,7 @@ const index = require('./lib/index.js');
 const init = () => {
     console.log(`
     ================================================================
-       *****   Welcome to onBase Content Management System  *****
+       ****  Welcome to the onBase Content Management System  ****
     Please choose one of the following activities (or exit to quit):
     ================================================================
     `)
